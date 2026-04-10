@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling - Training Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card" id="loginCard">
+            <div class="solo-logo">
+                <div class="shadow-icon">⚔️</div>
+                <h1>Solo Leveling</h1>
+                <p class="subtitle">Daily Training Quest</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="loginUsername" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Start Your Journey</button>
+            </form>
+            <p class="auth-switch">
+                New Hunter? <a href="#" onclick="showSignup()">Create Account</a>
+            </p>
+        </div>
+
+        <div class="auth-card" id="signupCard" style="display: none;">
+            <div class="solo-logo">
+                <div class="shadow-icon">⚔️</div>
+                <h1>Solo Leveling</h1>
+                <p class="subtitle">Become the Shadow Monarch</p>
+            </div>
+            
+            <form id="signupForm">
+                <div class="input-group">
+                    <input type="text" id="signupFullname" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="signupUsername" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Begin Training</button>
+            </form>
+            <p class="auth-switch">
+                Already a Hunter? <a href="#" onclick="showLogin()">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

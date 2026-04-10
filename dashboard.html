@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling - Daily Quest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <nav class="nav-bar">
+            <div class="nav-content">
+                <div class="logo-section">
+                    <span class="shadow-icon-small">⚔️</span>
+                    <h2>Solo Leveling</h2>
+                </div>
+                <div class="user-section">
+                    <span class="user-rank" id="userRank">E-Rank Hunter</span>
+                    <span class="user-name" id="userNameDisplay"></span>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Level Progress -->
+            <div class="level-card">
+                <div class="level-header">
+                    <h3>Hunter Level Progress</h3>
+                    <span id="currentLevel" class="level-badge">E-Rank</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="levelProgress"></div>
+                </div>
+                <div class="level-stats">
+                    <span>⚡ XP: <span id="currentXP">0</span> / <span id="nextLevelXP">100</span></span>
+                    <span>📊 Total Quests: <span id="totalQuests">0</span></span>
+                    <span>⭐ Side Missions: <span id="sideMissionsCompleted">0</span></span>
+                </div>
+            </div>
+
+            <!-- Daily Quest - Solo Leveling Training -->
+            <div class="quest-card">
+                <div class="quest-header">
+                    <h2>📜 Main Quest - The Path of the Shadow Monarch</h2>
+                    <div class="quest-reward">
+                        <span>🏆 Reward: +100 XP</span>
+                        <span id="questStatus" class="quest-status">Incomplete</span>
+                    </div>
+                </div>
+                
+                <div class="quest-list">
+                    <!-- Quest 1: Push-ups -->
+                    <div class="quest-item" data-quest="pushups">
+                        <div class="quest-info">
+                            <div class="quest-icon">💪</div>
+                            <div class="quest-details">
+                                <h4>100 Push-ups</h4>
+                                <p>Chest and arm strengthening</p>
+                                <div class="quest-progress">
+                                    <input type="range" min="0" max="100" value="0" class="quest-slider" id="pushupsSlider">
+                                    <span class="quest-count" id="pushupsCount">0/100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quest-actions">
+                            <button onclick="addProgress('pushups', 10)" class="btn-add">+10</button>
+                            <button onclick="addProgress('pushups', 25)" class="btn-add">+25</button>
+                            <button onclick="completeQuest('pushups')" class="btn-complete">Complete</button>
+                        </div>
+                    </div>
+
+                    <!-- Quest 2: Sit-ups -->
+                    <div class="quest-item" data-quest="situps">
+                        <div class="quest-info">
+                            <div class="quest-icon">🔥</div>
+                            <div class="quest-details">
+                                <h4>100 Sit-ups</h4>
+                                <p>Core training</p>
+                                <div class="quest-progress">
+                                    <input type="range" min="0" max="100" value="0" class="quest-slider" id="situpsSlider">
+                                    <span class="quest-count" id="situpsCount">0/100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quest-actions">
+                            <button onclick="addProgress('situps', 10)" class="btn-add">+10</button>
+                            <button onclick="addProgress('situps', 25)" class="btn-add">+25</button>
+                            <button onclick="completeQuest('situps')" class="btn-complete">Complete</button>
+                        </div>
+                    </div>
+
+                    <!-- Quest 3: Squats -->
+                    <div class="quest-item" data-quest="squats">
+                        <div class="quest-info">
+                            <div class="quest-icon">🦵</div>
+                            <div class="quest-details">
+                                <h4>100 Squats</h4>
+                                <p>Lower body strength</p>
+                                <div class="quest-progress">
+                                    <input type="range" min="0" max="100" value="0" class="quest-slider" id="squatsSlider">
+                                    <span class="quest-count" id="squatsCount">0/100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quest-actions">
+                            <button onclick="addProgress('squats', 10)" class="btn-add">+10</button>
+                            <button onclick="addProgress('squats', 25)" class="btn-add">+25</button>
+                            <button onclick="completeQuest('squats')" class="btn-complete">Complete</button>
+                        </div>
+                    </div>
+
+                    <!-- Quest 4: Run -->
+                    <div class="quest-item" data-quest="run">
+                        <div class="quest-info">
+                            <div class="quest-icon">🏃</div>
+                            <div class="quest-details">
+                                <h4>10 km Run</h4>
+                                <p>Cardiovascular endurance</p>
+                                <div class="quest-progress">
+                                    <input type="range" min="0" max="10" value="0" class="quest-slider" id="runSlider">
+                                    <span class="quest-count" id="runCount">0/10 km</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quest-actions">
+                            <button onclick="addProgress('run', 1)" class="btn-add">+1 km</button>
+                            <button onclick="addProgress('run', 2.5)" class="btn-add">+2.5 km</button>
+                            <button onclick="completeQuest('run')" class="btn-complete">Complete</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Completion Bonus -->
+                <div class="daily-bonus">
+                    <button onclick="completeDailyQuest()" class="btn-daily-complete">
+                        ⚔️ Complete All Quests - Claim Daily Reward ⚔️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Side Missions - Daily Habits (NEW) -->
+            <div class="side-missions-card">
+                <div class="side-missions-header">
+                    <div class="header-icon">
+                        <span>⭐</span>
+                        <h2>Side Missions - Daily Habits</h2>
+                        <span>⭐</span>
+                    </div>
+                    <p class="side-missions-subtitle">Complete these habits to earn bonus XP (50 XP each)</p>
+                    <div class="side-missions-stats">
+                        <span>🏆 Today's Progress: <span id="completedMissions">0</span>/<span id="totalMissions">7</span></span>
+                        <span>⚡ Potential XP: <span id="potentialXP">0</span> XP</span>
+                    </div>
+                </div>
+
+                <div class="habits-grid" id="habitsGrid">
+                    <!-- Habits will be dynamically loaded here -->
+                </div>
+
+                <div class="side-missions-footer">
+                    <button onclick="claimSideMissionRewards()" class="btn-claim-side" id="claimSideBtn">
+                        ⭐ Claim All Completed Side Missions (Earn XP) ⭐
+                    </button>
+                </div>
+            </div>
+
+            <!-- Training History -->
+            <div class="history-card">
+                <div class="history-header">
+                    <h3>📊 Training History</h3>
+                    <button onclick="clearHistory()" class="btn-clear">Clear History</button>
+                </div>
+                <div id="historyList" class="history-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
